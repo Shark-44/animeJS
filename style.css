@@ -1,0 +1,290 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.body {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+.ciel {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, #b8daf5 0%, #e8f4fd 60%, #f5faff 100%);
+}
+
+.styled {
+    position: absolute;
+    z-index: 100;
+    bottom:10px;
+    left: 10px;
+    height: 50px;
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    border-radius: 10px;
+    background-color: tomato;
+    background-image: linear-gradient(
+      to top left,
+      rgb(0 0 0 / 20%),
+      rgb(0 0 0 / 20%) 30%,
+      transparent
+    );
+    box-shadow:
+      inset 2px 2px 3px rgb(255 255 255 / 60%),
+      inset -2px -2px 3px rgb(0 0 0 / 60%);
+  }
+  
+  .styled:hover {
+    background-color: red;
+  }
+  
+  .rewind {
+    position: absolute;
+    z-index: 100;
+    bottom:10px;
+    right: 10px;
+    height: 50px;
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    border-radius: 10px;
+    background-color: rgb(255, 246, 71);
+    background-image: linear-gradient(
+      to top left,
+      rgb(0 0 0 / 20%),
+      rgb(0 0 0 / 20%) 30%,
+      transparent
+    );
+    box-shadow:
+      inset 2px 2px 3px rgb(255 255 255 / 60%),
+      inset -2px -2px 3px rgb(0 0 0 / 60%);
+  }
+  
+  .rewind:hover {
+    background-color: rgb(216, 208, 61);
+  }
+  .rewind:active {
+    box-shadow:
+      inset -2px -2px 3px rgb(255 255 255 / 60%),
+      inset 2px 2px 3px rgb(0 0 0 / 60%);
+  }
+.nuage {
+    position: absolute;
+    z-index: 50;
+    top: 100px;
+    width: 180px;
+    height: 55px;
+    background: white;
+    border-radius: 55px;
+    box-shadow: 
+    -5px -5px 10px rgba(0, 0, 255, 0.1),
+    -10px -10px 20px rgba(0, 0, 255, 0.05),
+    -15px -15px 30px rgba(0, 0, 255, 0.03);
+    animation: apparait 3s linear forwards;
+}
+.nuage.active {
+    animation: disparait 2s linear forwards;
+}
+.n1 {
+    left: 10%;
+}
+.n2 {
+    left: 60%;
+    animation-delay: 2s;
+    opacity: 0;
+    scale: 0;
+}
+.bosse {
+    position: absolute;
+    z-index: 50;
+    background: white;
+    box-shadow: 
+    -5px -5px 10px rgba(0, 0, 255, 0.1),
+    -10px -10px 20px rgba(0, 0, 255, 0.05),
+    -15px -15px 30px rgba(0, 0, 255, 0.03);
+    border-radius: 50%;
+    bottom: 28px;
+}
+
+.b1 { width: 70px; height: 70px; left: 22px; }
+.b2 { width: 90px; height: 90px; left: 58px; }
+.b3 { width: 55px; height: 55px; left: 108px; }
+
+@keyframes apparait {
+
+    0% {
+        opacity: 0;
+        scale:0;
+    }
+    50%{
+        opacity: 1;
+        scale: 0.5;
+    }
+    100%{
+        opacity: 1;
+        scale: 1;
+    }
+}
+@keyframes disparait {
+
+    0% {
+        opacity: 1;
+        scale:1;
+    }
+    50%{
+        opacity: 1;
+        scale: 0.5;
+    }
+    100%{
+        opacity: 0;
+        scale: 0;
+    }
+}
+.cloud {
+    position: absolute;
+    z-index: 50;
+    width: 180px;
+    height: 55px;
+    background: white;
+    box-shadow: 
+    -5px -5px 10px rgba(0, 0, 255, 0.1),
+    -10px -10px 20px rgba(0, 0, 255, 0.05),
+    -15px -15px 30px rgba(58, 58, 225, 0.03);
+    border-radius: 55px;
+    animation: apparait 3s linear forwards;
+}
+/*storm*/
+.storm .cloud {
+    filter: brightness(0.6) contrast(1.2);
+    transition: filter 5s;
+  }
+  .storm .cloud .bump {
+    filter: brightness(0.6) contrast(0.8);
+  }
+  .storm .nuage {
+    filter: brightness(0.6) contrast(0.8);
+    transition: filter 5s;
+  }
+  .storm .nuage .bosse {
+    filter: brightness(0.6) contrast(0.8);
+  }
+  .cloud::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit; 
+    background: radial-gradient(circle at center, rgba(76, 75, 75, 0.6), rgba(0,0,0,0.4));
+    opacity: 0;
+    transition: opacity 5s;
+  }
+  .storm .cloud::after {
+    opacity: 1;
+  }
+/*storm*/
+.cloud.active{
+    animation: disparait 2s linear forwards;
+}
+.bump {
+    position: absolute;
+    z-index: 50;
+    background: white;
+    box-shadow: 
+    -5px -5px 10px rgba(0, 0, 255, 0.1),
+    -10px -10px 20px rgba(0, 0, 255, 0.05),
+    -15px -15px 30px rgba(0, 0, 255, 0.03);
+    border-radius: 50%;
+    bottom: 28px;
+}
+
+.rain {
+    position: absolute;
+    z-index: 50;
+    
+    width: 2px;
+    height: 10px;
+    background-color: blue;
+    animation: fall 6s linear forwards;
+}
+
+@keyframes fall {
+    0%{ 
+        transform: translateY(0);
+    }
+    100%{
+        transform: translateY(100vh); 
+    }
+}
+
+.overlay {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background: rgba(69, 66, 66, 0.84);
+    opacity: 0;
+    transition: opacity 10s;
+}
+
+.soleil {
+    position: absolute;
+    top: 24px;
+    right: 50%;
+    width: 54px;
+    height: 54px;
+    background: #ffe566;
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px rgba(255,229,102,0.2), 0 0 0 20px rgba(255,229,102,0.08);
+    animation: luire 4s ease-in-out infinite;
+  }
+
+  @keyframes luire {
+    0%, 100% { box-shadow: 0 0 0 10px rgba(255,229,102,0.2), 0 0 0 20px rgba(255,229,102,0.08); }
+    50% { box-shadow: 0 0 0 14px rgba(255,229,102,0.28), 0 0 0 28px rgba(255,229,102,0.1); }
+  }
+
+  .rayon {
+    position: absolute;
+    z-index: 5;
+    top: 100%;
+    left: 50%;
+    width: 2px;
+    height: 18px;
+    background: rgba(255,220,50,0.55);
+    border-radius: 2px;
+    transform-origin: center -27px;
+    transform: translate(-50%, -50%) rotate(var(--angle));
+  }
+/*
+.overlayCloud {
+    position: absolute;
+    z-index: 50;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, #333 -15%, #999 50%, #eee 80%);
+    opacity: 0;
+    transition: opacity 10s;
+}
+*/
+.test {
+    position: absolute;
+    z-index: 1000;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    /*background: radial-gradient(circle at 30% 30%, #333, #aaa);;*/
+   /* background: radial-gradient(circle at 30% 30%, #333, #ccc);*/
+    background: radial-gradient(circle at center, #333 -15%, #999 50%, #eee 80%);
+}
